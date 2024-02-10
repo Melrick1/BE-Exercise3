@@ -1,6 +1,10 @@
-const users = {
+// users
+const express = require('express');
+const userRouter = express.Router();
+
+userRouter.get('/', (req, res) => {
     //copied from postman
-    data: [
+    const data = [
         {
           "id": 1,
           "name": "Leanne Graham",
@@ -232,6 +236,7 @@ const users = {
           }
         }
     ]
-};
+    res.json(data);
+});
   
-module.exports = users;
+module.exports = userRouter;

@@ -2,6 +2,7 @@
 const express = require('express');
 const morgan = require('morgan');
 const about = require('./about');
+const users = require('./users')
 
 const app = express();
 
@@ -12,6 +13,7 @@ app.get('/', (req, res) => {
 });
 
 app.use('/about', about);
+app.use('/users', users);
 
 const port = 2000;
 
