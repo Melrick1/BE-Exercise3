@@ -1,26 +1,24 @@
+// about
 const express = require('express');
+const aboutRouter = express.Router();
+const membersRouter = require('./members'); // Import members router
+
 const moment = require('moment');
-const membersRouter = require('./members');
 
-const router = express.Router();
+const formattedDate = moment().format('MMMM Do YYYY, h:mm:ss a');
 
-// Route to include member details from membersRouter
-router.get('/', (req, res) => {
-    const formattedDate = moment().format('MMMM Do YYYY, h:mm:ss a');
-
-    res.json({
+// define the about page route
+aboutRouter.get('/', (req, res) => {
+    const about = {
         "Status": 'success',
         "Message": 'response success',
         "Description": 'Exercise #03',
         "Date": `${formattedDate}`,
-        "Data": [
-            membersRouter.hendy(),
-            membersRouter.gerry(),
-            membersRouter.mitch(),
-            membersRouter.ichad(),
-            membersRouter.christina()
-        ]
-    });
+        "Data": [  
+            membersRouter
+        ] 
+    };
+    res.json(about);
 });
 
-module.exports = router;
+module.exports = aboutRouter;
